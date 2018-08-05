@@ -10,6 +10,11 @@ function get_lat_long($str)
 
 $image = $argv[1];
 $result = shell_exec("identify -format '%[EXIF:*]' " . $argv[1] . " | grep \".*Latitude.*\|.*Longitude.*\"");
+if (!$result)
+{
+    echo "There is no GPS data :/ \n";
+    exit();
+}
 $result = explode("\n", $result);
 $latitude = get_lat_long($result[0]);
 $longitude = get_lat_long($result[2]);
