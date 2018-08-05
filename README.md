@@ -1,5 +1,5 @@
 # img_gps
-Search the GPS data of an image.
+Show GPS data of an image.
 
 ### How to use:  
 brew install imagemagick  
