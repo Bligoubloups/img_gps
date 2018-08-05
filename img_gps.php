@@ -8,6 +8,12 @@ function get_lat_long($str)
     return ((float)$values[0] + (float)$values[1]/60 + (float)$values[2]/1000000/3600);
 }
 
+if (file_exists($argv[1]) == 0)
+{
+    echo "File not found...\n";
+    exit();
+}
+
 $image = $argv[1];
 $result = shell_exec("identify -format '%[EXIF:*]' " . $argv[1] . " | grep \".*Latitude.*\|.*Longitude.*\"");
 if (!$result)
