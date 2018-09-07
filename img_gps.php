@@ -30,6 +30,6 @@ if (preg_filter('/.*=([A-Z])/', '$1', $result[3]) == "W")
     $longitude = -$longitude;
 echo "Latitude = " . $latitude . "\n";
 echo "Longitude = " . $longitude . "\n";
-echo "https://www.google.fr/maps/search/" . $latitude . "," . $longitude
+echo "https://www.google.fr/maps/search/" . $latitude . "," . $longitude. "\n";
 
 ?>
