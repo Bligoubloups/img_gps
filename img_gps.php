@@ -5,7 +5,7 @@ function get_lat_long($str)
     $values[0] =preg_filter('/.*=(-?[0-9]+).[0-9], (-?[0-9]+).[0-9], (-?[0-9]+).[0-9]+/', '$1', $str); 
     $values[1] =preg_filter('/.*=(-?[0-9]+).[0-9], (-?[0-9]+).[0-9], (-?[0-9]+).[0-9]+/', '$2', $str); 
     $values[3] =preg_filter('/.*=(-?[0-9]+).[0-9], (-?[0-9]+).[0-9], (-?[0-9]+).[0-9]+/', '$3', $str);
-    return ((float)$values[0] + (float)$values[1]/60 + (float)$values[2]/1000000/3600);
+    return ((double)$values[0] + (double)$values[1]/60 + (double)$values[3]/(double)1000000/(double)3600);
 }
 
 if (file_exists($argv[1]) == 0)
@@ -15,7 +15,7 @@ if (file_exists($argv[1]) == 0)
 }
 
 $image = $argv[1];
-$result = shell_exec("identify -format '%[EXIF:*]' " . $argv[1] . " | grep \".*Latitude.*\|.*Longitude.*\"");
+$result = shell_exec("identify -format '%[EXIF:*]' " . "$argv[1]" . " | grep \".*Latitude.*\|.*Longitude.*\"");
 if (!$result)
 {
     echo "There is no GPS data :/ \n";
