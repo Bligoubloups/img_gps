@@ -15,7 +15,7 @@ if (file_exists($argv[1]) == 0)
 }
 
 $image = $argv[1];
-$result = shell_exec("identify -format '%[EXIF:*]' " . "$argv[1]" . " | grep \".*Latitude.*\|.*Longitude.*\"");
+$result = shell_exec("identify -format '%[EXIF:*]' " . "'". $argv[1] . "'" . " | grep \".*Latitude.*\|.*Longitude.*\"");
 if (!$result)
 {
     echo "There is no GPS data :/ \n";
